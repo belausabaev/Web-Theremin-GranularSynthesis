@@ -36,25 +36,26 @@ gp = new Tone.GrainPlayer("grainsynth/samples/audio/SH-el.mp3", function() {
 let playing = false;
 
 let grainPlaying = false;
-
+/*
 function preload() {
     thereminImg = loadImage('data/image/theremin.png');
 }
-
+*/
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('canvas');
     canvas.position(0, 0);
 
+    /*
     vidSize = windowWidth * 0.75;
     // farmerVid = createVideo(['data/video/farmersspring25fpsFHD.mp4'], vidLoad);
     // farmerVid.hide();
 
     face_layer = createGraphics(canvas.width, canvas.height);
     brush_layer = createGraphics(canvas.width, canvas.height);
-
+*/
     poseNetSetup();
-
+/*
     if (width < 2000) {
         thereminWidth = width / 2;
         thereminHeight = (width / 2) * 0.78;
@@ -62,7 +63,7 @@ function setup() {
         thereminWidth = 1000;
         thereminHeight = 1000 * 0.78;
     }
-
+*/
     // initAudio();
     
    // grainSample = 0; // 0 = synthetic sound, 2 = guitar sound, 3 = piano with echo sound
@@ -72,7 +73,7 @@ function setup() {
 function draw() {
     // background(253, 245, 230, 160);
     canvas.clear();
-    face_layer.clear();
+ //   face_layer.clear();
 
     // draw video
     // image(farmerVid, width / 2 - vidSize / 2, windowHeight * 0.05);
@@ -85,10 +86,11 @@ function draw() {
         let d = 30;
 
         if (typeof handR.x !== 'undefined') {
+            /*
             brush_layer.clear();
             brush_layer.fill(215, 123, 103, 100);
             brush_layer.noStroke();
-
+            */
             if (handR.confidence > 0.05 && handL.confidence > 0.05) {
                 d = int(dist(handR.x, handR.y, handL.x, handL.y));
             }
@@ -99,11 +101,13 @@ function draw() {
 
                 leftHandX = map(handL.x, 0, 640, 0, width);
                 leftHandY = map(handL.y, 0, 360, 0, height);
-
+                /*
                 brush_layer.ellipse(rightHandX, rightHandY, d / 10);
                 brush_layer.ellipse(leftHandX, leftHandY, d / 10);
+                */
             }
 
+            /*
             // face
             if (nose.confidence > 0.8) {
                 noseX = map(nose.x, 0, 640, 0, width);
@@ -130,7 +134,7 @@ function draw() {
                 face_layer.ellipse(noseX - 13, noseY - 10, 3);
                 face_layer.ellipse(noseX + 13, noseY - 10, 3);
             }
-
+            */
             if (playing) {
                 // trigger synth
                 synth.triggerAttackRelease('A3', '0.1');
@@ -157,11 +161,13 @@ function draw() {
             }
         }
     }
+    /*
     // draw layers
     image(face_layer, 0, 0);
     image(brush_layer, 0, 0);
     // draw theremin illustration
     image(thereminImg, width / 2 - thereminWidth / 1.6, height / 1.6 - thereminHeight / 2, thereminWidth, thereminHeight);
+    */
 }
 
 function drawFace() {
@@ -190,7 +196,7 @@ function vidLoad() {
     farmerVid.volume(0);
     farmerVid.size(vidSize);
 }
-
+/*
 function initAudio() {
     //create audio context for all theremin voices
     ctx = new (AudioContext || webkitAudioContext)();
@@ -209,7 +215,7 @@ function initAudio() {
     gainNode.gain.value = 0.5;
     var soundPlaying = false;
 }
-
+*/
 // pose recorder with timeline - can be saved to json file
 // https://github.com/osteele/p5pose-recorder
 // https://osteele.github.io/p5pose-recorder/

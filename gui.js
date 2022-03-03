@@ -1,7 +1,7 @@
 // GUI for grain params
 // Documentation: https://cocopon.github.io/tweakpane/input.html
 // Video Helper Function
-let myVideo = document.getElementById('video1');
+//let myVideo = document.getElementById('video1');
 let startTime = 0;
 let endTime = 10;
 
